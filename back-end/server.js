@@ -14,7 +14,7 @@ const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL,{
     UseCreateIndex: true.
-    (property) useUnifiedTopologyL: Boolean
+    (property) useUnifiedTopologyL: boolean
     useUnifiedTopologyL: true,
     useFindAndModify: false
 })
