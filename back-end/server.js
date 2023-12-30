@@ -1,30 +1,27 @@
 const express = require("express");
-const mongoose = require("mongose");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
+require("dotenv").config();
 
-const PORT = process.env.PORT || 8070
+const PORT = process.env.PORT || 8070;
 
 app.use(cors());
 app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL,{
-    UseCreateIndex: true.valueOf
-    (property), useUnifiedTopologyL: boolean,
-    useUnifiedTopologyL: true,
-    useFindAndModify: false
-})
+// Corrected connection options:
+mongoose.connect(URL, { useUnifiedTopology: true }); // Only keep supported option
 
 const connection = mongoose.connection;
 
-connection.once("open",()=>{
-    console.log(" mongodb connection successfull");
-})
+connection.once("open", () => {
+  console.log("MongoDB connection successful");
+});
 
-app.listen(PORT , ()=>{
-    console.log("sever up and running ${PORT}")
-})
+app.listen(PORT, () => {
+  console.log("Server up and running on port", PORT);
+});
