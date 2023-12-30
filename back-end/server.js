@@ -18,3 +18,13 @@ mongoose.connect(URL,{
     useUnifiedTopologyL: true,
     useFindAndModify: false
 })
+
+const connection = mongoose.connection;
+
+connection.once("open",()=>{
+    console.log(" mongodb connection successfull");
+})
+
+app.listen(PORT , ()=>{
+    console.log("sever up and running ${PORT}")
+})
