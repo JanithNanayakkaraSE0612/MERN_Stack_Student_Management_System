@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 const URL = process.env.MONGODB_URL;
 
 // Corrected connection options:
-mongoose.connect(URL, { useUnifiedTopology: true }); // Only keep supported option
+mongoose.connect(URL, { useCreateIndex:true,useNewUrlParser:true, useUnifiedTopology: true,useFindAndModify:false }); // Only keep supported option
 
 const connection = mongoose.connection;
 
